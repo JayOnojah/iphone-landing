@@ -1,5 +1,5 @@
-import { appleImg, searchImg, bagImg } from '../utils';
 import { navLists } from '../constants';
+import { appleImg, searchImg, bagImg } from '../utils';
 
 const Navbar = () => {
   return (
@@ -23,4 +23,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar;
