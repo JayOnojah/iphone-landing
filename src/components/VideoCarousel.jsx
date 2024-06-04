@@ -68,8 +68,8 @@ const VideoCarousel = () => {
                 window.innerWidth < 760
                   ? "10vw" // mobile
                   : window.innerWidth < 1200
-                    ? "10vw" // tablet
-                    : "4vw", // laptop
+                  ? "10vw" // tablet
+                  : "4vw", // laptop
             });
 
             // set the background color of the progress bar
@@ -101,7 +101,7 @@ const VideoCarousel = () => {
       const animUpdate = () => {
         anim.progress(
           videoRef.current[videoId].currentTime /
-          hightlightsSlides[videoId].videoDuration
+            hightlightsSlides[videoId].videoDuration
         );
       };
 
@@ -168,11 +168,18 @@ const VideoCarousel = () => {
                   preload="auto"
                   playsInline={true}
                   ref={(el) => (videoRef.current[i] = el)}
-                  className={`${list.id === 2 && "translate-x-44"} pointer-events-none`}
-                  onEnded={() => i !== 3 ? handleProcess("video-end", i) : handleProcess("video-last")}
-                  onPlay={() => setVideo((pre) => ({ ...pre, isPlaying: true }))}
-                  onLoadedMetadata={(e) => handleLoadedMetaData(i, e)}
-                >
+                  className={`${
+                    list.id === 2 && "translate-x-44"
+                  } pointer-events-none`}
+                  onEnded={() =>
+                    i !== 3
+                      ? handleProcess("video-end", i)
+                      : handleProcess("video-last")
+                  }
+                  onPlay={() =>
+                    setVideo((pre) => ({ ...pre, isPlaying: true }))
+                  }
+                  onLoadedMetadata={(e) => handleLoadedMetaData(i, e)}>
                   <source src={list.video} type="video/mp4" />
                 </video>
               </div>
@@ -195,8 +202,7 @@ const VideoCarousel = () => {
             <span
               key={i}
               className="mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer"
-              ref={(el) => (videoDivRef.current[i] = el)}
-            >
+              ref={(el) => (videoDivRef.current[i] = el)}>
               <span
                 className="absolute h-full w-full rounded-full"
                 ref={(el) => (videoSpanRef.current[i] = el)}
@@ -209,7 +215,13 @@ const VideoCarousel = () => {
           <img
             alt={isLastVideo ? "replay" : !isPlaying ? "play" : "pause"}
             src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg}
-            onClick={isLastVideo ? () => handleProcess("video-reset") : !isPlaying ? () => handleProcess("play") : () => handleProcess("pause")}
+            onClick={
+              isLastVideo
+                ? () => handleProcess("video-reset")
+                : !isPlaying
+                ? () => handleProcess("play")
+                : () => handleProcess("pause")
+            }
           />
         </button>
       </div>
